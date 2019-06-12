@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Imgur Crawler</title>
+</head>
+<body style="text-align: center;">
+    <h1 id="found"></h1><h1 id="crawled"></h1>
+    <h2 id="reqpers"></h2>
+    <h2 id="foundspermin"></h2>
+    <h2 id="elapsed"></h2>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io();
+
+        socket.on('get crawled', crawled => document.getElementById('crawled').innerText = crawled + " / 5 455 160 701 056");
+        socket.on('get found', found => document.getElementById('found').innerText = found + " images found");
+        socket.on('get reqpers', reqpers => document.getElementById('reqpers').innerText = reqpers + " reqs/s");
+        socket.on('get foundspermin', foundspermin => document.getElementById('foundspermin').innerText = foundspermin + " founds/min");
+        socket.on('get elapsed', elapsed => document.getElementById('elapsed').innerText = elapsed + "s elapsed");
+    </script>
+</body>
+</html>
